@@ -28,9 +28,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-import org.tp.asod.ModRegistries.ModCreativeModTabs;
-import org.tp.asod.ModRegistries.Modblocks;
-import org.tp.asod.ModRegistries.Moditems;
+import org.tp.asod.ModRegistries.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Asod.MODID)
@@ -47,11 +45,12 @@ public class Asod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        Modblocks.register(modEventBus);
         Moditems.register(modEventBus);
         ModCreativeModTabs.register(modEventBus);
-
-
-
+        Modmodifiers.register(modEventBus);
+        Modbuffs.register(modEventBus);
+        Modfluids.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -79,7 +78,7 @@ public class Asod {
 
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    // You can use SubscribeEvent and let the Event Bus discover methods to
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 

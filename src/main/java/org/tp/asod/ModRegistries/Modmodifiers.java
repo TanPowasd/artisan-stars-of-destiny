@@ -9,4 +9,5 @@ public class Modmodifiers {
     public static void register(IEventBus eventBus) {
         MODIFIERS.register(eventBus);
     }
+
 }
