@@ -14,13 +14,14 @@ public class ModCreativeModTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Asod.MODID);
 
     public  static final RegistryObject<CreativeModeTab> AsodTab= CREATIVE_MODE_TABS.register("asod",
-            ()->CreativeModeTab.builder().icon(()->new ItemStack(Moditems.TANPOWASD.get()))
+            ()->CreativeModeTab.builder().icon(()->new ItemStack(Moditems.ARTISAN_STARS_OF_DESTINY.get()))
                     .title(Component.translatable("creativetab.asod_tab"))
                     .withSearchBar()
                     .displayItems((pParameters, pOutput) -> {
                         //ModItem
                        // pOutput.accept(ModItems.LRIRON.get());
                         pOutput.accept(Moditems.TANPOWASD.get());
+                        //pOutput.accept(Moditems.ARTISAN_STARS_OF_DESTINY.get());
                     })
                     .build()
 

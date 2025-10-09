@@ -12,6 +12,12 @@ public class Moditems {
             DeferredRegister.create(ForgeRegistries.ITEMS, Asod.MODID);
     public static final RegistryObject<Item> TANPOWASD=ITEMS.register("tanpowasd",
             ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ARTISAN_STARS_OF_DESTINY=ITEMS.register("artisan_stars_of_destiny",
+            ()->new Item(new Item.Properties()));
+
+
+
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }
