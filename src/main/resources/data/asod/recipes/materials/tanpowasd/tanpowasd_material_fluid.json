@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "asod:molten_tanpowasd",
+    "amount": 90
+  },
+  "temperature": 1000,
+  "output": "asod:tanpowasd"
+}

@@ -53,6 +53,11 @@ public class TcBase {
         }
         return null;
     }
-
+    //锁定监测
+    public static LivingEntity Lock_detection_GetEntity(LivingEntity player, float distance,float pStick,int pTicks) {
+        Level level = player.level(); // 获取玩家所在的世界
+        LivingEntity pReturn=null;
+        return pReturn;
+    }
     /* Todo 范围锁定监测 */
 }

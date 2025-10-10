@@ -33,7 +33,9 @@ public class Modfluids {
         FLUID_MAP.put(object,gas);
         return object;
     }
-    //public static final FluidObject<ForgeFlowingFluid>LRIRON_FLUID=registerHotFluid(FLUIDS,"lriron_fluid",3999,4,5,2f,false);
+
+    //测试流体注册
+    public static final FluidObject<ForgeFlowingFluid>MOLTEN_TANPOWASD=registerHotFluid(FLUIDS,"molten_tanpowasd",1000,4,5,2,false);
 
     private static FluidType.Properties hot(String name, int Temp, boolean gas) {
         return FluidType.Properties.create().density(gas?-2000:2000).viscosity(10000).temperature(Temp)

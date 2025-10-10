@@ -1,4 +1,14 @@
 {
   "creativetab.asod_tab": "工匠:命运群星",
-  "item.asod.tanpowasd": "是作者呢"
+
+  "item.asod.tanpowasd": "是作者呢",
+
+  "fluid.asod.molten_tanpowasd": "测试液体",
+
+  "material.asod.tanpowasd": "白板",
+  "material.asod.tanpowasd.flavor": "白板而已",
+
+  "modifier.asod.eager_edge": "急切刀锋",
+  "modifier.asod.eager_edge.flavor": "一把好刀，但似乎少了点什么…",
+  "modifier.asod.eager_edge.description": "切到此武器时获得急切buff,攻击时当7格内，30°范围内有实体，则锁定实体，急切至目标前，将水平动能设为零，并造成1.5倍伤害 \n当未索敌时，向视角方向的水平方向冲击，速度动能为7 \n有升级,获得升级后延长Buff存在时间并减少冷却"
 }

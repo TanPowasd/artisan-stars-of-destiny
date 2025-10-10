@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "asod:tanpowasd"
+  },
+  "result": {
+    "amount": 90,
+    "fluid": "asod:molten_tanpowasd"
+  },
+  "temperature": 1000,
+  "time": 100
+}

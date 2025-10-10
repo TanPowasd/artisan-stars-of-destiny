@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "cast_consumed": false,
+  "fluid": {
+    "name": "asod:molten_tanpowasd",
+    "amount": 90
+  },
+  "result": "asod:tanpowasd",
+  "cooling_time": 40
+}
