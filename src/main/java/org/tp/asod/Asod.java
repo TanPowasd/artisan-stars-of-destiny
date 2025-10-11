@@ -35,7 +35,7 @@ public class Asod {
 
         Asodblocks.register(modEventBus);
         Asoditems.register(modEventBus);
-        AsodCreativeModTabs_1.register(modEventBus);
+        AsodCreativeModTabs.register(modEventBus);
         Asodmodifiers.register(modEventBus);
         Asodbuffs.register(modEventBus);
         Asodfluids.register(modEventBus);

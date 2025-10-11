@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "asod.refmap.json",
   "mixins": [
+    "AsodMinecraftLivingEntityMixin"
   ],
   "client": [],
   "injectors": {

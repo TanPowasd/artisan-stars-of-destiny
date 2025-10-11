@@ -1,9 +1,10 @@
 {
-  "creativetab.asod_tab": "工匠:命运群星",
+  "creativetab.asod_tab_1": "工匠:命运群星",
 
   "item.asod.tanpowasd": "是作者呢",
 
   "fluid.asod.molten_tanpowasd": "测试液体",
+  "fluid.tconstruct.molten_tanpowasd": "测试液体",
 
   "material.asod.tanpowasd": "白板",
   "material.asod.tanpowasd.flavor": "白板而已",

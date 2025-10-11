@@ -1,4 +1,4 @@
-package org.tp.AsodF;
+package org.tp.AsodF.AsodMechanism;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -6,11 +6,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
+import org.tp.AsodF.AsodStruct.PAIR;
+import org.tp.AsodF.DeBug;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TcBase {
+//视角检测算法 *射线检测
+public class Visual_Inspection {
     //射线监测
     public static List<HitResult> Radiographic_detection_GetEntity(LivingEntity player, float distance) {
         Level level = player.level(); // 获取玩家所在的世界
@@ -43,7 +46,7 @@ public class TcBase {
                     hitwhat.sort((o1, o2) -> o1.getLocation().distanceToSqr(startPos) < o2.getLocation().distanceToSqr(startPos) ? -1 : 1);
                     HitResult hitResult = hitwhat.get(0);
                     if (hitResult instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof LivingEntity livingEntity) {
-                        DeBug.Logger.log("Radiographic_detection_GetEntity: " + livingEntity.getName().getString());
+                        // DeBug.Logger.log("Radiographic_detection_GetEntity: " + livingEntity.getName().getString());
                         return hitwhat;
                     } else {
                         return null;
@@ -53,11 +56,13 @@ public class TcBase {
         }
         return null;
     }
-    //锁定监测
+
+    //锁定监测(未完成)
+    /* Todo 范围锁定监测 */
     public static LivingEntity Lock_detection_GetEntity(LivingEntity player, float distance,float pStick,int pTicks) {
         Level level = player.level(); // 获取玩家所在的世界
         LivingEntity pReturn=null;
         return pReturn;
     }
-    /* Todo 范围锁定监测 */
+
 }
