@@ -1,12 +1,12 @@
-package org.tp.asod.ModRegistries;
+package org.tp.asod.AsodRegistries;
 
 import net.minecraftforge.eventbus.api.IEventBus;
 import org.tp.asod.Asod;
-import org.tp.asod.ModModifiers.*;
+import org.tp.asod.AsodModifiers.*;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
-public class Modmodifiers {
+public class Asodmodifiers {
     private static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(Asod.MODID);
     public static void register(IEventBus eventBus) {
         MODIFIERS.register(eventBus);

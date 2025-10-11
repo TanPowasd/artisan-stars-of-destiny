@@ -1,17 +1,7 @@
 package org.tp.asod;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -24,11 +14,9 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-import org.tp.asod.ModRegistries.*;
+import org.tp.asod.AsodRegistries.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Asod.MODID)
@@ -45,12 +33,12 @@ public class Asod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        Modblocks.register(modEventBus);
-        Moditems.register(modEventBus);
-        ModCreativeModTabs.register(modEventBus);
-        Modmodifiers.register(modEventBus);
-        Modbuffs.register(modEventBus);
-        Modfluids.register(modEventBus);
+        Asodblocks.register(modEventBus);
+        Asoditems.register(modEventBus);
+        AsodCreativeModTabs_1.register(modEventBus);
+        Asodmodifiers.register(modEventBus);
+        Asodbuffs.register(modEventBus);
+        Asodfluids.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 

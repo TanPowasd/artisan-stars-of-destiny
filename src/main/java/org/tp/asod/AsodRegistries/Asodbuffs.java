@@ -1,4 +1,4 @@
-package org.tp.asod.ModRegistries;
+package org.tp.asod.AsodRegistries;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -6,9 +6,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.tp.asod.Asod;
-import org.tp.asod.ModBuffs.*;
+import org.tp.asod.AsodBuffs.*;
 
-public class Modbuffs {
+public class Asodbuffs {
     public static final DeferredRegister<MobEffect> EFFECT=DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Asod.MODID);
     public static void register(IEventBus eventBus) {
         EFFECT.register(eventBus);

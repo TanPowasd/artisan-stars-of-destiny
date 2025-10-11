@@ -1,4 +1,4 @@
-package org.tp.asod.ModRegistries;
+package org.tp.asod.AsodRegistries;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.material.MapColor;
@@ -7,7 +7,6 @@ import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import org.checkerframework.checker.units.qual.A;
 import org.tp.asod.Asod;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
@@ -19,7 +18,7 @@ import java.util.Set;
 
 import static slimeknights.tconstruct.fluids.block.BurningLiquidBlock.createBurning;
 
-public class Modfluids {
+public class Asodfluids {
     public static final FluidDeferredRegister FLUIDS=new FluidDeferredRegister(Asod.MODID);
     protected static Map<FluidObject<ForgeFlowingFluid>,Boolean> FLUID_MAP = new HashMap<>();
     public static Set<FluidObject<ForgeFlowingFluid>> getFluids(){

@@ -1,4 +1,4 @@
-package org.tp.asod.ModRegistries;
+package org.tp.asod.AsodRegistries;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -9,18 +9,18 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import org.tp.asod.Asod;
 
-public class ModCreativeModTabs {
+public class AsodCreativeModTabs_1 {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS=
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Asod.MODID);
 
     public  static final RegistryObject<CreativeModeTab> AsodTab= CREATIVE_MODE_TABS.register("asod",
-            ()->CreativeModeTab.builder().icon(()->new ItemStack(Moditems.ARTISAN_STARS_OF_DESTINY.get()))
+            ()->CreativeModeTab.builder().icon(()->new ItemStack(Asoditems.ARTISAN_STARS_OF_DESTINY.get()))
                     .title(Component.translatable("creativetab.asod_tab"))
                     .withSearchBar()
                     .displayItems((pParameters, pOutput) -> {
                         //ModItem
                        // pOutput.accept(ModItems.LRIRON.get());
-                        pOutput.accept(Moditems.TANPOWASD.get());
+                        pOutput.accept(Asoditems.TANPOWASD.get());
                         //pOutput.accept(Moditems.ARTISAN_STARS_OF_DESTINY.get());
                     })
                     .build()

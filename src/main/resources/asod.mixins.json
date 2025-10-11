@@ -1,11 +1,10 @@
 {
   "required": true,
   "minVersion": "0.7",
-  "package": "org.tp.asod.mixin",
+  "package": "org.tp.asod.AsodMixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "asod.refmap.json",
   "mixins": [
-    "PlayerMixin"
   ],
   "client": [],
   "injectors": {

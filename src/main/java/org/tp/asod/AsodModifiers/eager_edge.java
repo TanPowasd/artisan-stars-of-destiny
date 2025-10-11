@@ -1,4 +1,4 @@
-package org.tp.asod.ModModifiers;
+package org.tp.asod.AsodModifiers;
 
 import org.tp.AsodF.FromST.BaseHooks;
 

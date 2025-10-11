@@ -1,4 +1,4 @@
-package org.tp.asod.ModBuffs;
+package org.tp.asod.AsodBuffs;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
