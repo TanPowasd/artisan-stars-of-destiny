@@ -1,20 +1,15 @@
 package org.tp.asod.AsodMixin;
 
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Attackable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.extensions.IForgeLivingEntity;
-import org.spongepowered.asm.mixin.Implements;
-import org.spongepowered.asm.mixin.Interface;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.tp.AsodF.AsodStruct.PAIR;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.tp.AsodF.DeBug;
 import org.tp.AsodF.MixinExtra.HittedDamageSource;
 import org.tp.AsodF.MixinExtra.HittedDamageSourceAPI;
@@ -34,8 +29,8 @@ public abstract class AsodMinecraftLivingEntityMixin extends Entity implements H
     @Unique
     protected HittedDamageSource HITtedDamageSource = new HittedDamageSource();
 
-    @Inject(method = "actuallyHurt", at = @At("HEAD"))
-    private void onActuallyHurt(DamageSource pDamageSource, float pDamageAmount, CallbackInfo ci) {
+    @Inject(method = "hurt", at = @At("HEAD"))
+    public void onHurt(DamageSource pDamageSource, float pAmount, CallbackInfoReturnable<Boolean> cir){
         /* TODO 为后面打元素反应划大饼  */
         DeBug.Logger.log("damgeSource: "+pDamageSource.toString());
         if(pDamageSource.is(AsodDamageType.ASOD_FIRE_DAMAGE_TYPE)){

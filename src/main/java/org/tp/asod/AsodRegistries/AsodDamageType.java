@@ -24,5 +24,6 @@ public class AsodDamageType {
     public static final ResourceKey<DamageType> ASOD_LIGHT_DAMAGE_TYPE = create("asod_light_damage_type");
     public static final ResourceKey<DamageType> ASOD_WATER_DAMAGE_TYPE = create("asod_water_damage_type");
     public static final ResourceKey<DamageType> ASOD_GRASS_DAMAGE_TYPE = create("asod_grass_damage_type");
+    public static final ResourceKey<DamageType> ASOD_NONE_DAMAGE_TYPE = create("asod_none_damage_type");
 
 }

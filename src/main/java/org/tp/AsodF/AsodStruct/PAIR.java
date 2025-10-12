@@ -15,7 +15,7 @@ public class PAIR {
         public T2 getSecond() {
             return second;
         }
-        void pInit(T1 first, T2 second) {
+        public void pInit(T1 first, T2 second) {
             this.first = first;
             this.second = second;
         }
@@ -38,7 +38,7 @@ public class PAIR {
         public T3 getThird() {
             return third;
         }
-        void pInit(T1 first, T2 second, T3 third) {
+        public void pInit(T1 first, T2 second, T3 third) {
             this.first = first;
             this.second = second;
             this.third = third;

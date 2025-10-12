@@ -1,28 +1,47 @@
 package org.tp.asod.AsodModifiers;
 
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import org.tp.AsodF.FromST.BaseHooks;
 import org.tp.AsodF.MixinExtra.HittedDamageSourceAPI;
 import org.tp.AsodF.NameUUID;
+import org.tp.asod.AsodRegistries.AsodDamageType;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.UUID;
 
+
 /*
 * 命运2词条 急切刀锋
 * */
-public class eager_edge extends Modifier implements MeleeDamageModifierHook {
+public class eager_edge extends Modifier implements MeleeHitModifierHook,MeleeDamageModifierHook{
     UUID uuid= NameUUID.GetUUID_fromName("eager_edge");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.MELEE_DAMAGE);
+        builder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.MELEE_DAMAGE);
+
+    }
+
+    /**
+     * @param tool       Tool used to attack
+     * @param modifier   Modifier level
+     * @param context    Attack context
+     * @param baseDamage Base damage dealt before modifiers
+     * @param damage     Computed damage from all prior modifiers
+     * @return
+     */
+    @Override
+    public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
+
+        return damage;
     }
     /*
     * 类似于命运2
@@ -33,12 +52,5 @@ public class eager_edge extends Modifier implements MeleeDamageModifierHook {
     * 3.词条为非异域词条，无催化，但有金急切加强
     * 金急切:buff时间增加10tick，冷却减少 5tick,未索敌时水平动量+1
     * */
-    @Override
-    public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-        LivingEntity attacker = context.getAttacker();
-        LivingEntity target = context.getLivingTarget();
-
-        return damage;
-    }
 
 }
