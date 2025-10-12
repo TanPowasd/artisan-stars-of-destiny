@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.tp.AsodF.AsodStruct.PAIR;
+import org.tp.AsodF.DeBug;
 import org.tp.AsodF.MixinExtra.HittedDamageSource;
 import org.tp.AsodF.MixinExtra.HittedDamageSourceAPI;
 import org.tp.asod.AsodRegistries.AsodDamageType;
@@ -35,6 +36,8 @@ public abstract class AsodMinecraftLivingEntityMixin extends Entity implements H
 
     @Inject(method = "actuallyHurt", at = @At("HEAD"))
     private void onActuallyHurt(DamageSource pDamageSource, float pDamageAmount, CallbackInfo ci) {
+        /* TODO 为后面打元素反应划大饼  */
+        DeBug.Logger.log("damgeSource: "+pDamageSource.toString());
         if(pDamageSource.is(AsodDamageType.ASOD_FIRE_DAMAGE_TYPE)){
             if(HITtedDamageSource.GetHittedFireStrength() == 0){
                 HITtedDamageSource.SetHittedFireStrength(1f);
