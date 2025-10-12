@@ -2,6 +2,7 @@ package org.tp.asod.AsodModifiers;
 
 import net.minecraft.world.entity.LivingEntity;
 import org.tp.AsodF.FromST.BaseHooks;
+import org.tp.AsodF.MixinExtra.HittedDamageSourceAPI;
 import org.tp.AsodF.NameUUID;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -16,7 +17,7 @@ import java.util.UUID;
 /*
 * 命运2词条 急切刀锋
 * */
-public class eager_edge extends Modifier implements MeleeDamageModifierHook{
+public class eager_edge extends Modifier implements MeleeDamageModifierHook {
     UUID uuid= NameUUID.GetUUID_fromName("eager_edge");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -36,6 +37,8 @@ public class eager_edge extends Modifier implements MeleeDamageModifierHook{
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker = context.getAttacker();
         LivingEntity target = context.getLivingTarget();
+
         return damage;
     }
+
 }

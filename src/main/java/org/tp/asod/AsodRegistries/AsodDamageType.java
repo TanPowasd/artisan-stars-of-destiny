@@ -3,12 +3,17 @@ package org.tp.asod.AsodRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
+import net.minecraftforge.eventbus.api.IEventBus;
 import org.tp.asod.Asod;
 
-public class AsodDamageSource {
+public class AsodDamageType {
     private static ResourceKey<DamageType> create(String string) {
         return ResourceKey.create(Registries.DAMAGE_TYPE,new ResourceLocation(Asod.MODID,string));
+    }
+    public static void register(IEventBus eventBus) {
+        AsodDamageType.register(eventBus);
     }
     public static final ResourceKey<DamageType> ASOD_FIRE_DAMAGE_TYPE = create("asod_fire_damage_type");
     public static final ResourceKey<DamageType> ASOD_ICE_DAMAGE_TYPE = create("asod_ice_damage_type");

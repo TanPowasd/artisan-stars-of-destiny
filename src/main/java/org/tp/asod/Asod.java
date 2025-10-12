@@ -39,6 +39,7 @@ public class Asod {
         Asodmodifiers.register(modEventBus);
         Asodbuffs.register(modEventBus);
         Asodfluids.register(modEventBus);
+        AsodDamageType.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
