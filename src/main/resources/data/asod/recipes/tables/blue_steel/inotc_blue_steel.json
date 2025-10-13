@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [{
+    "item": "minecraft:blue_dye"
+  },
+    {
+      "item":"tconstruct:steel_ingot"
+    }
+  ],
+  "result": {
+    "item": "asod:inotc_blue_steel"
+  }
+}

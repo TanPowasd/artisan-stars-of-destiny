@@ -21,6 +21,7 @@ public class AsodCreativeModTabs {
                         //ModItem
                        // pOutput.accept(ModItems.LRIRON.get());
                         pOutput.accept(Asoditems.TANPOWASD.get());
+                        pOutput.accept(Asoditems.INOTC_BLUE_STEEL.get());
                         //pOutput.accept(Moditems.ARTISAN_STARS_OF_DESTINY.get());
                     })
                     .build()
