@@ -5,6 +5,7 @@ import org.tp.AsodF.AsodStruct.PAIR;
 
 //向量计算
 public class VECTOR {
+    public static final double PI = ASOD_Constant.PI;
     //计算两个三维向量的点乘
     public static double VertorDot(Vec3 v1, Vec3 v2) {
         double pReturn;

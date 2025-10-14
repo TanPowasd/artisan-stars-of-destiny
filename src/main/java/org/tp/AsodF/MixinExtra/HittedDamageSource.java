@@ -14,7 +14,7 @@ public class HittedDamageSource {
     private PAIR.Pair2<Float, Integer> HittedDark = new PAIR.Pair2<>(0f, 0);//暗影强度-时间
     private PAIR.Pair2<Float, Integer> HittedGrass = new PAIR.Pair2<>(0f, 0);//草强度-时间
 
-    public float GetHittedFireStrength() {
+    public  float GetHittedFireStrength() {
         return HittedFire.first;
     }
     public int GetHittedFireTime() {
