@@ -10,6 +10,7 @@ import org.tp.AsodF.NameUUID;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
+
 //@program AsodF ShitThinkings 针对限制伤害的妙妙小方法
 public class Clever_little_tricks_to_limit_harm {
     UUID uuid_REAL_damageHIT= NameUUID.GetUUID_fromName("REAL_damageHIT");

@@ -4,6 +4,8 @@ import org.tp.AsodF.AsodStruct.PAIR;
 
 public class HittedDamageSource {
     //由于沟槽的mixin技术，导致巨构失败
+
+    //元素受击 强度-时间
     private PAIR.Pair2<Float, Integer> HittedFire = new PAIR.Pair2<>(0f, 0);//火焰强度-时间
     private PAIR.Pair2<Float, Integer> HittedIce = new PAIR.Pair2<>(0f, 0);//冰冻强度-时间
     private PAIR.Pair2<Float, Integer> HittedMagic = new PAIR.Pair2<>(0f, 0);//魔法强度-时间-同时作为虚空
