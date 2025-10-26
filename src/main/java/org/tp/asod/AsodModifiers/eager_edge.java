@@ -40,7 +40,8 @@ public class eager_edge extends Modifier implements MeleeHitModifierHook,MeleeDa
      */
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-
+        LivingEntity entity=context.getLivingTarget();
+        entity.getEntityData();
         return damage;
     }
     /*

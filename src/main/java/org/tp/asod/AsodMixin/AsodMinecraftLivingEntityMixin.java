@@ -18,6 +18,7 @@ import org.tp.asod.AsodRegistries.AsodDamageType;
 @Mixin(LivingEntity.class)
 public abstract class AsodMinecraftLivingEntityMixin extends Entity implements HittedDamageSourceAPI{
     //由于沟槽的mixin技术，导致巨构失败
+
     public AsodMinecraftLivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -39,6 +40,7 @@ public abstract class AsodMinecraftLivingEntityMixin extends Entity implements H
                 HITtedDamageSource.SetHittedFireTime(3*20);
             }
             else{
+
                 HITtedDamageSource.AddHittedFireStrength(0.5f);
                 HITtedDamageSource.AddHittedFireTime((int) (0.5*20));
             }

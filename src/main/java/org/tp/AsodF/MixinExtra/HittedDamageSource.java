@@ -5,6 +5,7 @@ import org.tp.AsodF.AsodStruct.PAIR;
 public class HittedDamageSource {
     //由于沟槽的mixin技术，导致巨构失败
 
+    //变量使用private,避免破坏封装性
     //元素受击 强度-时间
     private PAIR.Pair2<Float, Integer> HittedFire = new PAIR.Pair2<>(0f, 0);//火焰强度-时间
     private PAIR.Pair2<Float, Integer> HittedIce = new PAIR.Pair2<>(0f, 0);//冰冻强度-时间
@@ -16,7 +17,7 @@ public class HittedDamageSource {
     private PAIR.Pair2<Float, Integer> HittedDark = new PAIR.Pair2<>(0f, 0);//暗影强度-时间
     private PAIR.Pair2<Float, Integer> HittedGrass = new PAIR.Pair2<>(0f, 0);//草强度-时间
 
-    public  float GetHittedFireStrength() {
+    public float GetHittedFireStrength() {
         return HittedFire.first;
     }
     public int GetHittedFireTime() {
