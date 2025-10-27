@@ -9,6 +9,7 @@ import net.minecraft.world.phys.*;
 import org.tp.AsodF.AsodStruct.PAIR;
 import org.tp.AsodF.DeBug;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,9 +60,20 @@ public class Visual_Inspection {
 
     //锁定监测(未完成)
     /* Todo 范围锁定监测 */
-    public static LivingEntity Lock_detection_GetEntity(LivingEntity player, float distance,float pStick,int pTicks) {
+    /*
+    * @float distance 视角向前的最远点
+    * @float pStick 视角结束点向周围扩散形成三角锥的边长
+    * */
+    public static LivingEntity Lock_detection_GetEntity(LivingEntity player, float distance,float pStick,@Nullable int pTicks) {
         Level level = player.level(); // 获取玩家所在的世界
         LivingEntity pReturn=null;
+        if(!level.isClientSide){
+            ItemStack mainHandItem = player.getMainHandItem();
+            if(true){
+                Vec3 startPos = player.getEyePosition(); // 获取玩家眼睛位置
+
+            }
+        }
         return pReturn;
     }
 

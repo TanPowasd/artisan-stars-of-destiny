@@ -18,7 +18,7 @@ public interface HittedDamageSourceAPI {
     PAIR.Pair2<Float, Integer> HittedDark = new PAIR.Pair2<>(0f, 0);//暗影强度-时间
     PAIR.Pair2<Float, Integer> HittedGrass = new PAIR.Pair2<>(0f, 0);//草强度-时间
     */
-    /*
+
     @Nullable
     float GetHittedFireStrength();
     @Nullable
@@ -128,6 +128,6 @@ public interface HittedDamageSourceAPI {
     @Nullable
     void AddHittedGrassTime(int pTicks);
 
-     */
+
 
 }
