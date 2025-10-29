@@ -145,8 +145,7 @@ public class Visual_Inspection {
      * @param maxRadius 在最大距离处的圆锥半径
      * @return 如果点在圆锥内返回true，否则返回false
      */
-    private static boolean isInCone(Vec3 coneTip, Vec3 coneDirection, Vec3 point,
-                                    float maxDistance, float maxRadius) {
+    private static boolean isInCone(Vec3 coneTip, Vec3 coneDirection, Vec3 point, float maxDistance, float maxRadius) {
         // 计算从圆锥顶点到检测点的向量
         Vec3 toPoint = point.subtract(coneTip);
         double distanceToPoint = toPoint.length();
@@ -189,6 +188,126 @@ public class Visual_Inspection {
 
         // 如果没有命中任何方块，说明视线畅通
         return blockHit.getType() == HitResult.Type.MISS;
+    }
+
+
+    /**
+     * 获取圆锥区域内最接近光标方向的实体
+     * 这个方法会返回圆锥范围内，与玩家视线方向夹角最小的实体
+     *
+     * @param player 进行检测的玩家实体
+     * @param distance 检测的最大距离（圆锥高度）
+     * @param coneRadius 在最大距离处的圆锥底面半径
+     * @return 最接近光标方向的实体，如果没有符合条件的实体则返回null
+     */
+    public static LivingEntity getClosestEntityToCursor(LivingEntity player, float distance, float coneRadius) {
+        Level level = player.level();
+
+        // 只在服务端执行
+        if (level.isClientSide) {
+            return null;
+        }
+
+        Vec3 startPos = player.getEyePosition(); // 圆锥顶点：玩家眼睛位置
+        Vec3 lookVec = player.getLookAngle().normalize(); // 圆锥方向：玩家视线方向
+
+        // 获取圆锥范围内的所有实体
+        List<LivingEntity> entitiesInCone = getEntitiesInCone(player, startPos, lookVec, distance, coneRadius);
+
+        // 如果没有实体，直接返回null
+        if (entitiesInCone.isEmpty()) {
+            return null;
+        }
+
+        // 如果只有一个实体，直接返回
+        if (entitiesInCone.size() == 1) {
+            DeBug.Logger.log("CETC: " + entitiesInCone.get(0).getName().getString());
+            return entitiesInCone.get(0);
+        }
+
+        // 寻找最接近视线方向的实体
+        LivingEntity closestEntity = null;
+        double smallestAngle = Double.MAX_VALUE; // 初始化最小角度为最大值
+
+        for (LivingEntity entity : entitiesInCone) {
+            // 计算从玩家到实体的向量
+            Vec3 toEntity = entity.getEyePosition().subtract(startPos).normalize();
+
+            // 计算实体方向与视线方向的点积（余弦值）
+            double dotProduct = toEntity.dot(lookVec);
+
+            // 将点积转换为角度（弧度），点积越大角度越小
+            double angle = Math.acos(Math.min(1.0, Math.max(-1.0, dotProduct)));
+
+            // 如果这个实体角度更小，更新最接近的实体
+            if (angle < smallestAngle) {
+                smallestAngle = angle;
+                closestEntity = entity;
+            }
+        }
+        DeBug.Logger.log("CETC: " + closestEntity.getName().getString());
+        return closestEntity;
+    }
+
+    /**
+     * 获取圆锥区域内最接近光标方向的实体（带权重评分）
+     *
+     * @param player 进行检测的玩家实体
+     * @param distance 检测的最大距离（圆锥高度）
+     * @param coneRadius 在最大距离处的圆锥底面半径
+     * @param angleWeight 角度偏差的权重（推荐0.7-0.8）
+     * @param distanceWeight 距离因素的权重（推荐0.2-0.3）
+     * @return 综合评分最高的实体，如果没有符合条件的实体则返回null
+     */
+    public static LivingEntity getPrioritizedEntityInCone(LivingEntity player, float distance, float coneRadius, double angleWeight, double distanceWeight) {
+        Level level = player.level();
+
+        // 只在服务端执行
+        if (level.isClientSide) {
+            return null;
+        }
+
+        Vec3 startPos = player.getEyePosition();
+        Vec3 lookVec = player.getLookAngle().normalize();
+
+        // 获取圆锥范围内的所有实体
+        List<LivingEntity> entitiesInCone = getEntitiesInCone(player, startPos, lookVec, distance, coneRadius);
+
+        // 如果没有实体，直接返回null
+        if (entitiesInCone.isEmpty()) {
+            return null;
+        }
+
+        // 如果只有一个实体，直接返回
+        if (entitiesInCone.size() == 1) {
+            return entitiesInCone.get(0);
+        }
+
+        // 计算每个实体的权重，选择权重最高的
+        LivingEntity bestEntity = null;
+        double bestScore = Double.MAX_VALUE; // 权重越低越好
+
+        for (LivingEntity entity : entitiesInCone) {
+            // 计算角度偏差分数
+            Vec3 toEntity = entity.getEyePosition().subtract(startPos).normalize();
+            double dotProduct = toEntity.dot(lookVec);
+            double angleScore = 1.0 - dotProduct; // 角度偏差（0表示完全对准）
+
+            // 计算距离分数（标准化到0-1范围）
+            double distanceToEntity = startPos.distanceTo(entity.position());
+            double normalizedDistance = distanceToEntity / distance;
+
+            // 计算权重
+            double totalScore = (angleScore * angleWeight) + (normalizedDistance * distanceWeight);
+
+            // 如果这个实体权重更高，更新最佳实体
+            if (totalScore < bestScore) {
+                bestScore = totalScore;
+                bestEntity = entity;
+            }
+        }
+
+        return bestEntity;
     }
 
 }

@@ -2,6 +2,10 @@ package org.tp.asod.AsodModifiers;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import org.tp.AsodF.AsodMechanism.Visual_Inspection;
+import org.tp.AsodF.DeBug;
 import org.tp.AsodF.FromST.BaseHooks;
 import org.tp.AsodF.MixinExtra.HittedDamageSourceAPI;
 import org.tp.AsodF.NameUUID;
@@ -21,14 +25,17 @@ import java.util.UUID;
 /*
 * 命运2词条 急切刀锋
 * */
-public class eager_edge extends Modifier implements MeleeHitModifierHook,MeleeDamageModifierHook{
+public class eager_edge extends BaseHooks {
     UUID uuid= NameUUID.GetUUID_fromName("eager_edge");
+   /*
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.MELEE_DAMAGE);
 
     }
+
+   */
 
     /**
      * @param tool       Tool used to attack
@@ -43,6 +50,13 @@ public class eager_edge extends Modifier implements MeleeHitModifierHook,MeleeDa
         LivingEntity entity=context.getLivingTarget();
         entity.getEntityData();
         return damage;
+    }
+
+    @Override
+    public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
+        //this.modifierOnInventoryTick(iToolStackView, modifierEntry, level, entity, index, b, b1, itemStack);
+        LivingEntity P1= Visual_Inspection.getClosestEntityToCursor(entity,20f,5f);
+       // DeBug.Logger.log("CETC: " + P1.getName().getString());
     }
     /*
     * 类似于命运2
