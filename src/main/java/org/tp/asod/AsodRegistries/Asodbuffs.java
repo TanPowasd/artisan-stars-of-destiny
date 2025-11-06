@@ -14,4 +14,5 @@ public class Asodbuffs {
         EFFECT.register(eventBus);
     }
     public static final RegistryObject<MobEffect> EAGER_EDGE_BUFF=EFFECT.register("eager_edge_buff", eager_edge_buff::new);
+    public static final RegistryObject<MobEffect> DE_EAGER_EDGE_BUFF=EFFECT.register("de_eager_edge_buff", de_eager_edge_buff::new);
 }

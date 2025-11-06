@@ -257,7 +257,7 @@ public class Visual_Inspection {
      * @param coneRadius 在最大距离处的圆锥底面半径
      * @param angleWeight 角度偏差的权重（推荐0.7-0.8）
      * @param distanceWeight 距离因素的权重（推荐0.2-0.3）
-     * @return 综合评分最高的实体，如果没有符合条件的实体则返回null
+     * @return 权重最高的实体，如果没有符合条件的实体则返回null
      */
     public static LivingEntity getPrioritizedEntityInCone(LivingEntity player, float distance, float coneRadius, double angleWeight, double distanceWeight) {
         Level level = player.level();
@@ -285,7 +285,7 @@ public class Visual_Inspection {
 
         // 计算每个实体的权重，选择权重最高的
         LivingEntity bestEntity = null;
-        double bestScore = Double.MAX_VALUE; // 权重越低越好
+        double bestScore = Double.MAX_VALUE; // 权重越高越好
 
         for (LivingEntity entity : entitiesInCone) {
             // 计算角度偏差分数

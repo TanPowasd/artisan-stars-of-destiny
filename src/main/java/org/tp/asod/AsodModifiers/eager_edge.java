@@ -1,24 +1,18 @@
 package org.tp.asod.AsodModifiers;
-
-import net.minecraft.world.damagesource.DamageSource;
+import com.github.L_Ender.cataclysm.init.ModEffect;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import org.tp.AsodF.AsodMechanism.Visual_Inspection;
-import org.tp.AsodF.DeBug;
+import org.jetbrains.annotations.NotNull;
 import org.tp.AsodF.FromST.BaseHooks;
-import org.tp.AsodF.MixinExtra.HittedDamageSourceAPI;
 import org.tp.AsodF.NameUUID;
-import org.tp.asod.AsodRegistries.AsodDamageType;
-import slimeknights.tconstruct.library.modifiers.Modifier;
+import org.tp.asod.AsodRegistries.Asodbuffs;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
-import slimeknights.tconstruct.library.module.ModuleHookMap;
-import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
+
+import javax.annotation.Nullable;
 import java.util.UUID;
 
 
@@ -27,37 +21,19 @@ import java.util.UUID;
 * */
 public class eager_edge extends BaseHooks {
     UUID uuid= NameUUID.GetUUID_fromName("eager_edge");
-   /*
     @Override
-    protected void registerHooks(ModuleHookMap.Builder builder) {
-        super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.MELEE_DAMAGE);
+    public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
+        //this.modifierOnEquip(tool, modifier, context);
+        @Nullable LivingEntity Player = context.getEntity();
+        @Nullable MobEffect effect_ee = Asodbuffs.EAGER_EDGE_BUFF.get();
+        @Nullable MobEffect effect_dee = Asodbuffs.DE_EAGER_EDGE_BUFF.get();
+        if(Player!=null&&effect_ee!=null&&effect_dee!=null){
+            Player.addEffect(new MobEffectInstance(effect_ee,3*20,0));
+        }
+        //检测是是不是有冷却buff de_eager_edge_buff
 
     }
 
-   */
-
-    /**
-     * @param tool       Tool used to attack
-     * @param modifier   Modifier level
-     * @param context    Attack context
-     * @param baseDamage Base damage dealt before modifiers
-     * @param damage     Computed damage from all prior modifiers
-     * @return
-     */
-    @Override
-    public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-        LivingEntity entity=context.getLivingTarget();
-        entity.getEntityData();
-        return damage;
-    }
-
-    @Override
-    public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity entity, int index, boolean b, boolean b1, ItemStack itemStack) {
-        //this.modifierOnInventoryTick(iToolStackView, modifierEntry, level, entity, index, b, b1, itemStack);
-        LivingEntity P1= Visual_Inspection.getClosestEntityToCursor(entity,20f,5f);
-       // DeBug.Logger.log("CETC: " + P1.getName().getString());
-    }
     /*
     * 类似于命运2
     * 使用挂名BUFF eager_edge_buff(切到此武器获得3*20tick的buff,内置冷却3*20tick)

@@ -1,6 +1,7 @@
 package org.tp.asod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,7 +22,9 @@ import org.tp.asod.AsodRegistries.*;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Asod.MODID)
 public class Asod {
-
+    public static ResourceLocation getResourceLocation(String string){
+        return new ResourceLocation(MODID,string);
+    }
     // Define mod id in a common place for everything to reference
     public static final String MODID = "asod";
     // Directly reference a slf4j logger

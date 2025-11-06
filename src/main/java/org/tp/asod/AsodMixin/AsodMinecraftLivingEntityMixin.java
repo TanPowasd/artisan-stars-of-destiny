@@ -34,7 +34,7 @@ public abstract class AsodMinecraftLivingEntityMixin extends Entity implements H
     @Inject(method = "hurt", at = @At("HEAD"))
     public void onHurt(DamageSource pDamageSource, float pAmount, CallbackInfoReturnable<Boolean> cir){
         /* TODO 为后面打元素反应划大饼  */
-        //DeBug.Logger.log("damageSource: "+pDamageSource.toString());
+        DeBug.Logger.log("damageSource: "+pDamageSource.toString());
         if(pDamageSource.is(AsodDamageType.ASOD_FIRE_DAMAGE_TYPE)){
             if(HITtedDamageSource.GetHittedFireStrength() == 0){
                 HITtedDamageSource.SetHittedFireStrength(1f);
